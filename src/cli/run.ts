@@ -30,12 +30,12 @@ export async function run() {
     throw new Error('There are uncommitted changes in the current repository, please commit them and try again')
 
   // Update package.json
-  console.log(c.cyan(`${ARROW} bumping @antfu/eslint-config to v${version}`))
+  console.log(c.cyan(`${ARROW} bumping @merlinalexhjp/eslint-config to v${version}`))
   const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8')
   const pkg: Record<string, any> = JSON.parse(pkgContent)
 
   pkg.devDependencies ??= {}
-  pkg.devDependencies['@antfu/eslint-config'] = `^${version}`
+  pkg.devDependencies['@merlinalexhjp/eslint-config'] = `^${version}`
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
   console.log(c.green(`${CHECK} changes wrote to package.json`))
@@ -59,19 +59,19 @@ export async function run() {
 
   let eslintConfigContent: string = ''
 
-  const antfuConfig = `${eslintIgnores.length ? `ignores: ${JSON.stringify(eslintIgnores)}` : ''}`
+  const merlinConfig = `${eslintIgnores.length ? `ignores: ${JSON.stringify(eslintIgnores)}` : ''}`
   if (pkg.type === 'module') {
     eslintConfigContent = `
-import antfu from '@antfu/eslint-config'
+import merlin from '@merlinalexhjp/eslint-config'
 
-export default antfu({\n${antfuConfig}\n})
+export default merlin({\n${merlinConfig}\n})
 `.trimStart()
   }
   else {
     eslintConfigContent = `
-const antfu = require('@antfu/eslint-config').default
+const merlin = require('@merlinalexhjp/eslint-config').default
 
-module.exports = antfu({\n${antfuConfig}\n})
+module.exports = merlin({\n${merlinConfig}\n})
 `.trimStart()
   }
 
