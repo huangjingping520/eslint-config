@@ -36,6 +36,7 @@ export function markdown(options: OptionsComponentExts & OptionsOverrides = {}):
       rules: {
         'antfu/no-cjs-exports': 'off',
         'antfu/no-ts-export-equal': 'off',
+        'import/newline-after-import': 'off',
 
         'no-alert': 'off',
         'no-console': 'off',

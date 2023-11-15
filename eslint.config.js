@@ -14,7 +14,7 @@ export default merlin(
   {
     files: ['src/**/*.ts'],
     rules: {
-      'sort-keys/sort-keys-fix': 'error',
+      'perfectionist/sort-objects': 'error',
     },
   },
   {
