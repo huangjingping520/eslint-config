@@ -42,7 +42,7 @@ it('package.json updated', async () => {
 
   const pkgContent: Record<string, any> = await fs.readJSON(join(genPath, 'package.json'))
 
-  expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
+  expect(JSON.stringify(pkgContent.devDependencies)).toContain('@merlinalexhjp/eslint-config')
   expect(stdout).toContain('changes wrote to package.json')
 })
 
@@ -73,9 +73,9 @@ it('ignores files added in eslint.config.js', async () => {
   expect(stdout).toContain('created eslint.config.js')
   expect(eslintConfigContent)
     .toMatchInlineSnapshot(`
-      "const antfu = require('@antfu/eslint-config').default
+      "const merlin = require('@merlinalexhjp/eslint-config').default
 
-      module.exports = antfu({
+      module.exports = merlin({
       ignores: [\\"some-path\\",\\"**/some-path/**\\",\\"some-file\\",\\"**/some-file/**\\"]
       })
       "
