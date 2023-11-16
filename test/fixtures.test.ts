@@ -42,7 +42,6 @@ runWithConfig(
   },
 )
 
-// https://github.com/antfu/eslint-config/issues/255
 runWithConfig(
   'ts-override',
   {
