@@ -159,7 +159,7 @@ import merlin from '@merlin/eslint-config'
 
 export default merlin(
   {
-    // Configures for antfu's config
+    // Configures for merlin's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -182,7 +182,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import merlin from '@merlinalexhjp/eslint-config'
 
-export default antfu(
+export default merlin(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -206,7 +206,7 @@ We also provided an `overrides` options to make it easier:
 // eslint.config.js
 import merlin from '@merlinalexhjp/eslint-config'
 
-export default antfu({
+export default merlin({
   overrides: {
     vue: {
       'vue/operator-linebreak': ['error', 'before'],
