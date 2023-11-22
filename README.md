@@ -29,7 +29,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 // eslint.config.js
 import merlin from '@merlinalexhjp/eslint-config'
 
-export default merlin()
+export default await merlin()
 ```
 
 With CJS:
@@ -116,7 +116,7 @@ Normally you only need to import the `merlin` preset:
 // eslint.config.js
 import merlin from '@merlinalexhjp/eslint-config'
 
-export default merlin()
+export default await merlin()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
@@ -125,7 +125,7 @@ And that's it! Or you can configure each integration individually, for example:
 // eslint.config.js
 import merlin from '@merlin/eslint-config'
 
-export default merlin({
+export default await merlin({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -157,7 +157,7 @@ The `merlin` factory function also accepts any number of arbitrary custom config
 // eslint.config.js
 import merlin from '@merlin/eslint-config'
 
-export default merlin(
+export default await merlin(
   {
     // Configures for merlin's config
   },
@@ -182,7 +182,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import merlin from '@merlinalexhjp/eslint-config'
 
-export default merlin(
+export default await merlin(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
