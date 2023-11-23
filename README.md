@@ -219,3 +219,26 @@ export default merlin({
   }
 })
 ```
+
+### Optional Configs
+
+#### React
+
+We do include configs for React. But due to the install size of React plugins we didn't include the dependencies by default.
+
+To enable React support, need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  react: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise you can install them manually:
+
+```bash
+npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
+```

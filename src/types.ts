@@ -11,6 +11,8 @@ import type {
   MergeIntersection,
   NRules,
   Prefix,
+  ReactHooksRules,
+  ReactRules,
   RenamePrefix,
   RuleConfig,
   VitestRules,
@@ -37,6 +39,8 @@ export type Rules = WrapRuleConfig<
     RenamePrefix<NRules, 'n/', 'node/'> &
     Prefix<StylisticRules, 'style/'> &
     Prefix<AntfuRules, 'antfu/'> &
+    ReactHooksRules &
+    ReactRules &
     JSDocRules &
     ImportRules &
     EslintRules &
@@ -183,6 +187,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   stylistic?: boolean | StylisticConfig
 
   /**
+   * Enable react rules.
+   *
+   * @default true
+   */
+  react?: boolean
+
+  /**
    * Control to disable some rules in editors.
    * @default auto-detect based on the process.env
    */
@@ -199,5 +210,6 @@ export interface OptionsConfig extends OptionsComponentExts {
     jsonc?: FlatConfigItem['rules']
     markdown?: FlatConfigItem['rules']
     yaml?: FlatConfigItem['rules']
+    react?: FlatConfigItem['rules']
   }
 }
