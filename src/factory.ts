@@ -24,6 +24,7 @@ import {
   yaml,
 } from './configs'
 import { combine, interopDefault } from './utils'
+import { formatters } from './configs/formatters'
 
 const flatConfigProps: (keyof FlatConfigItem)[] = [
   'files',
@@ -165,10 +166,23 @@ export async function merlin(
   }
 
   if (options.markdown ?? true) {
-    configs.push(markdown({
-      componentExts,
-      overrides: overrides.markdown,
-    }))
+    configs.push(
+      markdown(
+        {
+          componentExts,
+          overrides: overrides.markdown,
+        },
+        options.formatters === true || !!(options.formatters || {})?.markdown,
+      ),
+    )
+  }
+
+
+  if (options.formatters) {
+    configs.push(formatters(
+      options.formatters,
+      typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
+    ))
   }
 
   // User can optionally pass a flat config item to the first argument

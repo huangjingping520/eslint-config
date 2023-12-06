@@ -76,7 +76,7 @@ it('ignores files added in eslint.config.js', async () => {
       "const merlin = require('@merlinalexhjp/eslint-config').default
 
       module.exports = merlin({
-      ignores: [\\"some-path\\",\\"**/some-path/**\\",\\"some-file\\",\\"**/some-file/**\\"]
+      ignores: ["some-path","**/some-path/**","some-file","**/some-file/**"]
       })
       "
     `)
