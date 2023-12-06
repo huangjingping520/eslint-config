@@ -52,6 +52,18 @@ runWithConfig(
 )
 
 runWithConfig(
+  'no-markdown-with-formatters',
+  {
+    jsx: false,
+    vue: false,
+    markdown: false,
+    formatters: {
+      markdown: true,
+    },
+  },
+)
+
+runWithConfig(
   'ts-override',
   {
     typescript: true,

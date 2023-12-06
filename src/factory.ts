@@ -177,11 +177,11 @@ export async function merlin(
     )
   }
 
-
   if (options.formatters) {
     configs.push(formatters(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
+      options.markdown !== false,
     ))
   }
 
