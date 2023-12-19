@@ -1,6 +1,6 @@
-// @ts-check
+// @ts-expect-error missing types
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import merlin from './dist/index.js'
+import merlin from './src'
 
 export default merlin(
   {
