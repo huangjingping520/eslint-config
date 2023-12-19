@@ -1,6 +1,6 @@
 # @merlinalexhjp/eslint-config
 
-[![npm](https://img.shields.io/npm/v/@merlinalexhjp/eslint-config?color=444&label=)](https://npmjs.com/package/@merlinalexhjp/eslint-config) 
+[![npm](https://img.shields.io/npm/v/@merlinalexhjp/eslint-config?color=444&label=)](https://npmjs.com/package/@merlinalexhjp/eslint-config)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)

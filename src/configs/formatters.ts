@@ -1,3 +1,4 @@
+import * as parserPlain from 'eslint-parser-plain'
 import { GLOB_CSS, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS } from '../globs'
 import type { VendoredPrettierOptions } from '../vender/prettier-types'
 import { ensurePackages, interopDefault } from '../utils'
@@ -7,7 +8,6 @@ import { StylisticConfigDefaults } from './stylistic'
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
-  markdownEnabled = true,
 ): Promise<FlatConfigItem[]> {
   await ensurePackages([
     'eslint-plugin-format',
@@ -56,7 +56,7 @@ export async function formatters(
 
   const configs: FlatConfigItem[] = [
     {
-      name: 'antfu:formatters:setup',
+      name: 'merlin:formatters:setup',
       plugins: {
         format: pluginFormat,
       },
@@ -68,9 +68,9 @@ export async function formatters(
       {
         files: [GLOB_CSS, GLOB_POSTCSS],
         languageOptions: {
-          parser: pluginFormat.parserPlain,
+          parser: parserPlain,
         },
-        name: 'antfu:formatter:css',
+        name: 'merlin:formatter:css',
         rules: {
           'format/prettier': [
             'error',
@@ -84,9 +84,9 @@ export async function formatters(
       {
         files: [GLOB_SCSS],
         languageOptions: {
-          parser: pluginFormat.parserPlain,
+          parser: parserPlain,
         },
-        name: 'antfu:formatter:scss',
+        name: 'merlin:formatter:scss',
         rules: {
           'format/prettier': [
             'error',
@@ -100,9 +100,9 @@ export async function formatters(
       {
         files: [GLOB_LESS],
         languageOptions: {
-          parser: pluginFormat.parserPlain,
+          parser: parserPlain,
         },
-        name: 'antfu:formatter:less',
+        name: 'merlin:formatter:less',
         rules: {
           'format/prettier': [
             'error',
@@ -120,9 +120,9 @@ export async function formatters(
     configs.push({
       files: ['**/*.html'],
       languageOptions: {
-        parser: pluginFormat.parserPlain,
+        parser: parserPlain,
       },
-      name: 'antfu:formatter:html',
+      name: 'merlin:formatter:html',
       rules: {
         'format/prettier': [
           'error',
@@ -139,9 +139,9 @@ export async function formatters(
     configs.push({
       files: ['**/*.toml'],
       languageOptions: {
-        parser: pluginFormat.parserPlain,
+        parser: parserPlain,
       },
-      name: 'antfu:formatter:toml',
+      name: 'merlin:formatter:toml',
       rules: {
         'format/dprint': [
           'error',
@@ -160,13 +160,11 @@ export async function formatters(
       : options.markdown
 
     configs.push({
-      files: markdownEnabled
-        ? ['**/*.__markdown_content__']
-        : [GLOB_MARKDOWN],
+      files: [GLOB_MARKDOWN],
       languageOptions: {
-        parser: pluginFormat.parserPlain,
+        parser: parserPlain,
       },
-      name: 'antfu:formatter:markdown',
+      name: 'merlin:formatter:markdown',
       rules: {
         [`format/${formater}`]: [
           'error',
@@ -180,6 +178,25 @@ export async function formatters(
                 ...dprintOptions,
                 language: 'markdown',
               },
+        ],
+      },
+    })
+  }
+
+  if (options.graphql) {
+    configs.push({
+      files: ['**/*.graphql'],
+      languageOptions: {
+        parser: parserPlain,
+      },
+      name: 'merlin:formatter:graphql',
+      rules: {
+        'format/prettier': [
+          'error',
+          {
+            ...prettierOptions,
+            parser: 'graphql',
+          },
         ],
       },
     })

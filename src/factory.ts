@@ -172,7 +172,6 @@ export async function merlin(
           componentExts,
           overrides: overrides.markdown,
         },
-        options.formatters === true || !!(options.formatters || {})?.markdown,
       ),
     )
   }
@@ -181,7 +180,6 @@ export async function merlin(
     configs.push(formatters(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
-      options.markdown !== false,
     ))
   }
 
