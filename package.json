@@ -1,7 +1,7 @@
 {
   "name": "@merlinalexhjp/eslint-config",
   "type": "module",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "packageManager": "pnpm@8.12.1",
   "description": "Merlin's ESLint Config",
   "author": "Merlin Alex <merlinalexhjp@gmail.com> (https://github.com/huangjingping520)",
