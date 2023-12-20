@@ -230,9 +230,9 @@ To enable React support, need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import merlin from '@merlinalexhjp/eslint-config'
 
-export default antfu({
+export default merlin({
   react: true,
 })
 ```
