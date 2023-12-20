@@ -113,13 +113,6 @@ export interface OptionsFormatters {
   html?: 'prettier' | boolean
 
   /**
-   * Enable formatting support for TOML.
-   *
-   * Currently only support dprint.
-   */
-  toml?: 'dprint' | boolean
-
-  /**
    * Enable formatting support for Markdown.
    *
    * Support both Prettier and dprint.
@@ -263,6 +256,13 @@ export interface OptionsConfig extends OptionsComponentExts {
   yaml?: boolean
 
   /**
+   * Enable TOML support.
+   *
+   * @default true
+   */
+  toml?: boolean
+
+  /**
    * Enable linting for **code snippets** in Markdown.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
@@ -329,6 +329,7 @@ export interface OptionsConfig extends OptionsComponentExts {
     jsonc?: FlatConfigItem['rules']
     markdown?: FlatConfigItem['rules']
     yaml?: FlatConfigItem['rules']
+    toml?: FlatConfigItem['rules']
     react?: FlatConfigItem['rules']
   }
 }
